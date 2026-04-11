@@ -60,6 +60,19 @@
 
     </androidx.cardview.widget.CardView>
 
+    <ImageView
+        android:id="@+id/imgMoodBg"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:adjustViewBounds="true"
+        android:alpha="0.9"
+        android:contentDescription="Mood character"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="-150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSave"
         android:layout_width="0dp"
@@ -72,20 +85,6 @@
         app:cornerRadius="12dp"
         app:backgroundTint="#3D7EF5"
         app:layout_constraintTop_toBottomOf="@id/cardJournal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!-- Gambar mood di belakang button, tulis terakhir = tampil depan tidak -->
-    <ImageView
-        android:id="@+id/imgMoodBg"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:adjustViewBounds="true"
-        android:alpha="0.9"
-        android:contentDescription="Mood character"
-        android:scaleType="fitCenter"
-        android:layout_marginBottom="-150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
