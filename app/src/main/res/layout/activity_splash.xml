@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/moji_logo"
+        android:src="@drawable/ic_moji_logo"
         app:layout_constraintBottom_toTopOf="@id/imgMojiGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
