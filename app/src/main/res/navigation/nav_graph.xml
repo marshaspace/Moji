@@ -15,6 +15,11 @@
         android:label="History" />
 
     <fragment
+        android:id="@+id/moodPickerFragment"
+        android:name="com.moji.v1.ui.mood.MoodPickerFragment"
+        android:label="Pick Mood" />
+
+    <fragment
         android:id="@+id/journalFragment"
         android:name="com.moji.v1.ui.journal.JournalFragment"
         android:label="Write it Out">
