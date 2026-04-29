@@ -44,6 +44,7 @@ class JournalFragment : Fragment() {
             Mood.SAD -> R.drawable.bg_journal_sad
             Mood.TIRED -> R.drawable.bg_journal_tired
             Mood.ANGRY -> R.drawable.bg_journal_angry
+            Mood.ENVY -> R.drawable.bg_journal_envy
         }
         binding.cardJournal.setBackgroundResource(journalBg)
 
@@ -53,6 +54,7 @@ class JournalFragment : Fragment() {
             Mood.SAD -> R.drawable.moji_sad
             Mood.TIRED -> R.drawable.moji_tired
             Mood.ANGRY -> R.drawable.moji_angry
+            Mood.ENVY -> R.drawable.moji_envy
         }
         binding.imgMoodBg.setImageResource(moodChar)
 

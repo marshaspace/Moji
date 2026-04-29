@@ -41,7 +41,8 @@ class HomeFragment : Fragment() {
         binding.rvMoodCards.layoutManager = GridLayoutManager(requireContext(), 2).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
-                    return if (position == Mood.values().size - 1) 2 else 1
+                    val totalItems = Mood.values().size
+                    return if (totalItems % 2 != 0 && position == totalItems - 1) 2 else 1
                 }
             }
         }

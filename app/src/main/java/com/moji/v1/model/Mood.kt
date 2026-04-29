@@ -45,5 +45,12 @@ enum class Mood(
         backgroundColor = R.color.mood_angry_bg,
         cardBackground = R.drawable.bg_mood_angry,
         character = R.drawable.moji_angry
+    ),
+    ENVY(
+        label = "Envy",
+        description = "Comparing yourself a bit today",
+        backgroundColor = R.color.mood_envy_bg,
+        cardBackground = R.drawable.bg_mood_envy,
+        character = R.drawable.moji_envy
     )
 }
