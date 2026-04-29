@@ -20,6 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="How are you feeling today?"
@@ -40,7 +41,7 @@
         android:textColor="#888888"
         android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView

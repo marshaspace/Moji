@@ -12,6 +12,7 @@ class DrawingView @JvmOverloads constructor(
 ) : View(context, attrs) {
 
     private val paths = mutableListOf<Pair<Path, Paint>>()
+    private val undoStack = mutableListOf<Pair<Path, Paint>>()
     private var currentPath = Path()
     private var currentPaint = createPaint(Color.RED, 8f)
 
@@ -34,8 +35,23 @@ class DrawingView @JvmOverloads constructor(
         currentPaint = createPaint(currentPaint.color, size)
     }
 
+    fun undo() {
+        if (paths.isNotEmpty()) {
+            undoStack.add(paths.removeLast())
+            invalidate()
+        }
+    }
+
+    fun redo() {
+        if (undoStack.isNotEmpty()) {
+            paths.add(undoStack.removeLast())
+            invalidate()
+        }
+    }
+
     fun clear() {
         paths.clear()
+        undoStack.clear()
         currentPath = Path()
         invalidate()
     }
@@ -60,6 +76,7 @@ class DrawingView @JvmOverloads constructor(
             }
             MotionEvent.ACTION_UP -> {
                 paths.add(Pair(currentPath, currentPaint))
+                undoStack.clear()
                 currentPath = Path()
             }
         }

@@ -37,6 +37,54 @@ class JournalFragment : Fragment() {
         }
     }
 
+    private fun showStickerBottomSheet() {
+        val bottomSheet = com.google.android.material.bottomsheet.BottomSheetDialog(requireContext())
+        val sheetView = layoutInflater.inflate(R.layout.bottom_sheet_sticker, null)
+        bottomSheet.setContentView(sheetView)
+
+        val stickerMap = mapOf(
+            R.id.stickerThink to R.drawable.sticker_think,
+            R.id.stickerFlower to R.drawable.sticker_flower,
+            R.id.stickerCloud to R.drawable.sticker_cloud,
+            R.id.stickerStar to R.drawable.sticker_star
+        )
+
+        stickerMap.forEach { (viewId, drawableId) ->
+            sheetView.findViewById<android.widget.ImageView>(viewId).setOnClickListener {
+                addStickerToJournal(drawableId)
+                bottomSheet.dismiss()
+            }
+        }
+
+        bottomSheet.show()
+    }
+
+    private fun addStickerToJournal(drawableId: Int) {
+        val sticker = android.widget.ImageView(requireContext())
+        sticker.setImageResource(drawableId)
+
+        val size = 150
+        val params = android.widget.FrameLayout.LayoutParams(size, size)
+        params.leftMargin = 100
+        params.topMargin = 100
+        sticker.layoutParams = params
+
+        // Make draggable
+        sticker.setOnTouchListener { v, event ->
+            when (event.action) {
+                android.view.MotionEvent.ACTION_MOVE -> {
+                    v.x = event.rawX - v.width / 2
+                    v.y = event.rawY - binding.cardJournal.top - v.height / 2
+                }
+            }
+            true
+        }
+
+        // Tambahkan ke FrameLayout dalam cardJournal
+        val frameLayout = binding.cardJournal.getChildAt(0) as android.widget.FrameLayout
+        frameLayout.addView(sticker)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -79,12 +127,11 @@ class JournalFragment : Fragment() {
             pickImage.launch("image/*")
         }
 
-        // Add Sticker — toast dulu, bisa dikembangin
         binding.btnAddSticker.setOnClickListener {
-            Toast.makeText(requireContext(), "Sticker coming soon! 🎨", Toast.LENGTH_SHORT).show()
+            showStickerBottomSheet()
         }
 
-        // Add Scribble — toggle scribble mode
+        // Add Scribble
         binding.btnAddScribble.setOnClickListener {
             isScribbleMode = !isScribbleMode
             if (isScribbleMode) {
@@ -99,6 +146,9 @@ class JournalFragment : Fragment() {
                 binding.btnAddScribble.text = "Add Scribble"
             }
         }
+
+        binding.btnUndo.setOnClickListener { binding.drawingView.undo() }
+        binding.btnClearScribble.setOnClickListener { binding.drawingView.clear() }
 
         // Color picker
         binding.colorRed.setOnClickListener { binding.drawingView.setColor(Color.parseColor("#EF5350")) }

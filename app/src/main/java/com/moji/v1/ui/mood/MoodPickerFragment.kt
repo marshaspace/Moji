@@ -39,13 +39,7 @@ class MoodPickerFragment : Fragment() {
             findNavController().navigate(R.id.journalFragment, bundle)
         }
 
-        binding.rvMoodPicker.layoutManager = GridLayoutManager(requireContext(), 2).apply {
-            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    return if (position == Mood.values().size - 1) 2 else 1
-                }
-            }
-        }
+        binding.rvMoodPicker.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvMoodPicker.adapter = adapter
     }
 
