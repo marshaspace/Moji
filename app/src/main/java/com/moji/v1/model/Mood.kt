@@ -58,6 +58,6 @@ enum class Mood(
         backgroundColor = R.color.mood_envy_bg,
         cardBackground = R.drawable.bg_mood_envy,
         character = R.drawable.moji_envy,
-        barFill = R.drawable.mood_bar_red_fill // Changed from pink to red/anger as requested
+        barFill = R.drawable.mood_bar_purple_fill // Updated to the new purple bar from your friend
     )
 }
