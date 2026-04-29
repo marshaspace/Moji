@@ -105,8 +105,6 @@ class HomeFragment : Fragment() {
 
     private fun setupMoodCards() {
         val adapter = MoodAdapter(Mood.values().toList()) { mood ->
-            val bundle = bundleOf("selectedMood" to mood.name)
-            findNavController().navigate(R.id.journalFragment, bundle)
         }
 
         binding.rvMoodCards.layoutManager = GridLayoutManager(requireContext(), 2).apply {

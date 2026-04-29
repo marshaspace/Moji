@@ -21,5 +21,9 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         binding.bottomNav.setupWithNavController(navController)
+
+        binding.fab.setOnClickListener {
+            navController.navigate(R.id.moodPickerFragment)
+        }
     }
 }
