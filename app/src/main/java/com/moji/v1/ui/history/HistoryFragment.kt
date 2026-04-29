@@ -31,6 +31,7 @@ class HistoryFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var moodMap: Map<String, Mood> = emptyMap()
+    private var selectedDateKey: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -104,7 +105,11 @@ class HistoryFragment : Fragment() {
                     }
 
                     container.tvDay.setOnClickListener {
-                        showEntries(key)
+                        if (selectedDateKey == key) {
+                            showEntries(null)
+                        } else {
+                            showEntries(key)
+                        }
                     }
 
                 } else {
@@ -125,6 +130,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun showEntries(dateKey: String?) {
+        selectedDateKey = dateKey
         val entries = if (dateKey == null) {
             DummyData.entries
         } else {
